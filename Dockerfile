@@ -6,8 +6,9 @@ RUN conda install -c nvidia cuda-nvcc -y
 
 WORKDIR "/app"
 
-COPY . .
-
+COPY requirements.txt .
 RUN pip install -r requirements.txt
+
+COPY cepad .
 
 CMD ["python", "-u", "cepad/main.py"]
