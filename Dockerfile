@@ -12,4 +12,6 @@ COPY requirements.txt .
 COPY cepad cepad
 RUN pip install -r requirements.txt
 
+# Runs python as unbuffered so that logs appear when
+# running using the `docker run` command
 CMD ["python", "-u", "cepad/main.py"]
