@@ -32,7 +32,7 @@ python cepad/main.py
 
 ```
 
-TO run the image sender/receiver, use this other script:
+To run the image sender/receiver, use this other script:
 
 ```bash
 
