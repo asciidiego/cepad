@@ -149,3 +149,8 @@ diagram does not render correctly, check the README.md raw file.
                           └────────────────────────────────────┘
 
 ```
+
+## Start redis from a docker container
+```bash
+sudo docker run --name redis -p 6379:6379 -d redis
+```
