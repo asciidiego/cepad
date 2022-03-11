@@ -1,3 +1,4 @@
+import os
 import io
 import time
 import threading
@@ -5,8 +6,8 @@ import threading
 from PIL import Image
 from redis import StrictRedis
 
-REDIS_URL = "10.10.60.80"
-REDIS_PORT = "6379"
+REDIS_URL = os.getenv("REDIS_URL", "127.0.0.1")
+REDIS_PORT = os.getenv("REDIS_PORT", 6379)
 
 redis_client = StrictRedis(REDIS_URL, port=REDIS_PORT)
 
