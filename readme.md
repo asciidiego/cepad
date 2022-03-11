@@ -61,7 +61,7 @@ Click here to see the sample `nvidia-smi` output.
 
 ### Environment setup
 
-Create a virtual environment using `venv`.
+Create a virtual environment using `venv` and install dependencies.
 
 ```bash
 
