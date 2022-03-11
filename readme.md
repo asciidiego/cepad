@@ -1,7 +1,7 @@
 # cepad
 
-This repository contains a CUDA-Enabled Pub/Sub application in
-Docker (cepad)
+This repository contains a **C**UDA-**E**nabled **P**ub/Sub **A**pplication in
+**D**ocker (cepad)
 
 ## Setup
 
