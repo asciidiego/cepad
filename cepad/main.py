@@ -12,16 +12,13 @@ REDIS_PORT = os.getenv("REDIS_PORT", 6379)
 redis_client = StrictRedis(REDIS_URL, port=REDIS_PORT)
 
 def generate_image(message):
-    if "type" in message and message["type"] == 'subscribe':
-        print("Handshake received.")
-        return
 
     msg = str(message["data"])
 
     NUM_IMAGES = 10
     for i in range(NUM_IMAGES):
-        print(f"Creating image {i}")
-        time.sleep(0.5)
+        print(f"Creating image {i} with label: {msg}")
+        time.sleep(5)
         image = Image.new('RGB', (100, 100), color = 'pink')
         draw = ImageDraw.Draw(image)
         W, H = image.size
@@ -40,7 +37,11 @@ if __name__ == "__main__":
     pubsub = redis_client.pubsub()
     pubsub.subscribe("jobs")
     for message in pubsub.listen():
+        if "type" in message and message["type"] == 'subscribe':
+            print("Handshake received.")
+            continue
+
         print(f"New message: {message}")
-        job_available = redis_client.lpop("jobs")
-        print(job_available)
-        # generate_image(message)
+        new_job = redis_client.lpop("jobs")
+        if new_job:
+            generate_image(message)
