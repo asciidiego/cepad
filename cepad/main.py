@@ -38,7 +38,9 @@ def generate_image(message):
 
 if __name__ == "__main__":
     pubsub = redis_client.pubsub()
-    pubsub.subscribe("image")
+    pubsub.subscribe("jobs")
     for message in pubsub.listen():
-        print(f"new msg: {message}")
-        generate_image(message)
+        print(f"New message: {message}")
+        job_available = redis_client.lpop("jobs")
+        print(job_available)
+        # generate_image(message)
