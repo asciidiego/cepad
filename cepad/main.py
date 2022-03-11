@@ -1,11 +1,12 @@
 import io
 import os
 import time
+import subprocess
 
 from redis import StrictRedis
 from PIL import Image, ImageDraw
 
-cuda_enabled = os.system("nvcc --version | grep -c nvcc | sed 's/1/Enabled/'")
+cuda_enabled = subprocess.check_output("nvcc --version | grep -c nvcc | sed 's/1/Enabled/'", shell=True)
 
 
 REDIS_URL = os.getenv("REDIS_URL", "127.0.0.1")
