@@ -1,9 +1,11 @@
 import io
+import time
+import threading
 
 from PIL import Image
 from redis import StrictRedis
 
-REDIS_URL = "localhost"
+REDIS_URL = "10.10.60.80"
 REDIS_PORT = "6379"
 
 redis_client = StrictRedis(REDIS_URL, port=REDIS_PORT)
@@ -25,5 +27,13 @@ def process_stream():
         print(f"Saved image: img_{i}.png")
         i += 1
 
+
 if __name__ == "__main__":
-    process_stream()
+    thread = threading.Thread(target=process_stream)
+    thread.start()
+
+    time.sleep(0.5)
+
+    while True:
+        prompt = input("Enter your text: ")
+        redis_client.publish("image", prompt)
