@@ -26,7 +26,7 @@ def generate_image(message):
         W, H = image.size
         w, h = draw.textsize(msg + str(i))
 
-        draw.text(((W - w) / 4, (H - h) / 4), f"[CUDA:{cuda_enabled}"]: {msg}-{i}", (255, 255, 255))
+        draw.text(((W - w) / 4, (H - h) / 4), f"[CUDA:{cuda_enabled}]: {msg}-{i}", (255, 255, 255))
 
         img_byte_arr = io.BytesIO()
         image.save(img_byte_arr, format="JPEG")
