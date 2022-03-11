@@ -11,9 +11,11 @@ Docker (cepad)
 
 Create a virtual environment using `venv`.
 
-```bash python -m venv .venv
+```bash
 
-# .venv is ignored by .gitignore ```
+python -m venv .venv # .venv is ignored by .gitignore
+
+```
 
 ## Usage
 
@@ -24,9 +26,17 @@ messages and save the received images locally.
 
 To run the image processor, use this script:
 
-```bash python cepad/main.py ```
+```bash
+
+python cepad/main.py
+
+```
 
 TO run the image sender/receiver, use this other script:
 
-```bash python script/send_and_receive.py ```
+```bash
+
+python script/send_and_receive.py
+
+```
 
