@@ -7,6 +7,19 @@ Docker (cepad)
 
 ### System requirements
 
+- You have installed and configured Docker.
+- You have installed Nvidia drivers.
+- You have installed `nvidia-container-toolkit`.
+
+A way of knowing that you meet the pre-requisites is executing
+the following command:
+
+```bash
+
+sudo docker run --rm --gpus all pytorch/pytorch:1.11.0-cuda11.3-cudnn8-runtime nvidia-smi
+
+```
+
 ### Environment setup
 
 Create a virtual environment using `venv`.
