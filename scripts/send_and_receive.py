@@ -36,4 +36,7 @@ if __name__ == "__main__":
 
     while True:
         prompt = input("Enter your text: ")
-        redis_client.publish("image", prompt)
+
+        redis_client.lpush("jobs", prompt)
+
+        redis_client.publish("jobs", prompt)
