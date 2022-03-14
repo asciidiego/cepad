@@ -5,4 +5,4 @@
   roles:
     - { role: prepare-node, tags: ['configuration'] }
     - { role: git-clone-module, tags: ['configuration'] }
-    - { role: cepad-worker, tags: ['build'] }
+    - { role: cepad-worker, tags: ['application'] }
