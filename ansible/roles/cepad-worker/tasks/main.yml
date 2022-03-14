@@ -1,0 +1,30 @@
+---
+- name: Install Docker Python package
+  pip:
+    name: docker
+- name: Build cepad image
+  community.docker.docker_image:
+    name: cepad
+    tag: latest
+    push: no
+    source: build
+    build:
+      path: ~/cepad
+# This is necessary so that cepad works
+- name: Start Redis
+  community.docker.docker_container:
+    name: redis
+    image: redis
+    state: started
+    restart: yes
+    network_mode: host
+    exposed_ports:
+      - 6379
+  
+- name: Start container
+  community.docker.docker_container:
+    name: cepad
+    image: "cepad:latest"
+    state: started
+    restart: yes
+    network_mode: host

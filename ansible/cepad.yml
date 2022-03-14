@@ -3,7 +3,6 @@
 
 - hosts: all
   roles:
-    - prepare-node
-    - git-clone-module
-
-# TODO: Deploy application code
+    - { role: prepare-node, tags: ['configuration'] }
+    - { role: git-clone-module, tags: ['configuration'] }
+    - { role: cepad-worker, tags: ['application'] }
