@@ -1,0 +1,34 @@
+# Name of the SSH key (e.g. git_ssh_key)
+KEY_TITLE: git_ssh
+
+# Location of the SSH key to be (e.g. ~/.ssh/id_rsa_git)
+KEY_PATH: ~/.ssh/id_ed25519
+
+# Git repository to be cloned. Must be SSH (not https)
+GIT_REPO: git@github.com:diegonyc/cepad.git
+
+# Branch of the git repository (e.g. master)
+GIT_BRANCH: main
+
+# Directory where the repository will be cloned (e.g. /home/user/repo_name)
+CLONE_DEST: ~/cepad
+
+# Location of the SSH known hosts file (e.g. ~/.ssh/known_hosts)
+KNOWN_HOSTS_PATH: ~/.ssh/known_hosts
+
+# Location of the git binary (e.g. /usr/bin/git)
+GIT_EXECUTABLE: /usr/bin/git
+
+# Github FQDN
+GIT_SERVER_FQDN: github.com
+
+# GitHub personal access token
+# (e.g. GITHUB_ACCESS_TOKEN: <Encrypted Token>)
+GITHUB_ACCESS_TOKEN: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          37633736373463396261346332666532646337636538666435313935663932366132373130336633
+          3663393836613935363432323639333131393165633739610a383539316335323535653663356236
+          33663831333435383764313130326166313937316461333435336162343334346135343632363636
+          3163363562633433370a313135316139656437376662636164306630383338626337383130356564
+          34336562646263666538343132323231396232663138326162653133376366393335663036393263
+          6439373135353936663037323330366165386630373439613934

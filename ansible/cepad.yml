@@ -1,0 +1,9 @@
+---
+# This playbook deploys the `cepad` module on all hosts
+
+- hosts: all
+  roles:
+    - prepare-node
+    - git-clone-module
+
+# TODO: Deploy application code
