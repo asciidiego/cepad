@@ -1,0 +1,33 @@
+---
+# This playbook contains plays that will prepare a node to run the `ai` module
+- name: Install required system packages
+  apt: name={{ item }} state=latest update_cache=yes
+  loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+- name: Add Nvidia Container Toolkit apt GPG key
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    state: present
+- name: Add Nvidia Container Toolkit Repository
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "deb https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64 /"
+    - "deb https://nvidia.github.io/nvidia-container-runtime/stable/ubuntu18.04/amd64 /"
+    - "deb https://nvidia.github.io/nvidia-docker/ubuntu18.04/amd64 /"
+- name: Install Nvidia Container Toolkit
+  apt: update_cache=yes name=nvidia-docker2 state=latest
+
+- name: Add Docker apt GPG Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+- name: Update apt and install docker-ce
+  apt: update_cache=yes name=docker-ce state=latest
+- name: Restart Docker service
+  service: name=docker state=restarted enabled=yes
